@@ -3,8 +3,11 @@ import json
 import streamlit as st
 from sqlalchemy import func
 
-from src.database import SessionLocal
+from src.database import Base, SessionLocal, engine
 from src.models import Incident
+
+
+Base.metadata.create_all(bind=engine)
 
 
 st.set_page_config(
@@ -91,11 +94,13 @@ data = get_data()
 
 
 st.title("🛡️ SentinelAI")
+
 st.subheader(
     "AI Reliability & Incident Response Dashboard"
 )
 
 st.divider()
+
 
 col1, col2, col3, col4 = st.columns(4)
 
@@ -119,7 +124,9 @@ col4.metric(
     data["blocked"]
 )
 
+
 st.divider()
+
 
 col1, col2, col3, col4 = st.columns(4)
 
@@ -143,9 +150,12 @@ col4.metric(
     data["escalations"]
 )
 
+
 st.divider()
 
+
 st.subheader("Incident Overview")
+
 
 chart_data = {
     "PASSED": data["passed"],
@@ -153,11 +163,15 @@ chart_data = {
     "BLOCKED": data["blocked"]
 }
 
+
 st.bar_chart(chart_data)
+
 
 st.divider()
 
+
 st.subheader("Agent Execution Timeline")
+
 
 if data["incidents"]:
 
@@ -231,9 +245,18 @@ if data["incidents"]:
             "for this incident."
         )
 
+else:
+
+    st.info(
+        "No incidents recorded yet."
+    )
+
+
 st.divider()
 
+
 st.subheader("Recent Incidents")
+
 
 if data["incidents"]:
 
