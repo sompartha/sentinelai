@@ -70,3 +70,15 @@ Unlike a system that only checks whether an answer is correct, SentinelAI attemp
              |
              v
       Streamlit Dashboard
+
+      # SentinelAI
+
+Autonomous Multi-Agent AI Reliability and Incident Response Platform.
+
+## 🚀 Live Demo
+
+[**Open SentinelAI Live Demo**](https://sentinelai-2nnagmc2fyphihtszt4ga4.streamlit.app/)
+
+## 📂 GitHub Repository
+
+[**View Source Code**](https://github.com/sompartha/sentinelai)
